@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SozlukApp.Api.Domain.Models
 {
-    public class User
+    public class User: BaseEntity
     {
         public string FirstName { get; set; }
 
