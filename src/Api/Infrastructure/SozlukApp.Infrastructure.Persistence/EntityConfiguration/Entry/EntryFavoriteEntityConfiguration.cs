@@ -24,7 +24,9 @@ namespace SozlukApp.Infrastructure.Persistence.EntityConfiguration.Entry
 
             builder.HasOne(i => i.CreatedUser)
                 .WithMany(i => i.EntryFavorites)
-                .HasForeignKey(i => i.CreatedById);
+                .HasForeignKey(i => i.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+                
 
         }
     }

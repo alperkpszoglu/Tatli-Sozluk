@@ -13,8 +13,14 @@ namespace SozlukApp.Infrastructure.Persistence.Context
     {
         public const string DEFAULT_SCHEME = "dbo";
 
+        public SozlukAppContext()
+        {
+                
+        }
+
         public SozlukAppContext(DbContextOptions options) : base(options)
         {
+
         }
 
         DbSet<User> Users { get; set; }
@@ -25,6 +31,16 @@ namespace SozlukApp.Infrastructure.Persistence.Context
         DbSet<EmailConfirmation> EmailConfirmations { get; set; }
         DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
         DbSet<EntryCommentVote> EntryCommentVotes { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string connectionString = "Data Source=ALPER; Initial Catalog= sozlukAppDB; Integrated Security=True;Encrypt=False;Connection Timeout=120;";
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
