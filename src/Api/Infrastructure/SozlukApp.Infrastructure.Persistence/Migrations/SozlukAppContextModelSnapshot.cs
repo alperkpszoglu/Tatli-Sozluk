@@ -99,7 +99,7 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EntryId");
 
-                    b.ToTable("EntryComments");
+                    b.ToTable("entrycomment", "dbo");
                 });
 
             modelBuilder.Entity("SozlukApp.Api.Domain.Models.EntryCommentFavorite", b =>
@@ -124,7 +124,7 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EntryCommentId");
 
-                    b.ToTable("EntryCommentFavorites");
+                    b.ToTable("entrycommentfavorite", "dbo");
                 });
 
             modelBuilder.Entity("SozlukApp.Api.Domain.Models.EntryCommentVote", b =>
@@ -150,7 +150,7 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EntryCommentId");
 
-                    b.ToTable("EntryCommentVotes");
+                    b.ToTable("entrycommentvote", "dbo");
                 });
 
             modelBuilder.Entity("SozlukApp.Api.Domain.Models.EntryFavorite", b =>
@@ -218,9 +218,8 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmailConfirmed")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

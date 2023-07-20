@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SozlukApp.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMigration : Migration
+    public partial class firstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,7 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmailConfirmed = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -72,7 +72,8 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntryComments",
+                name: "entrycomment",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -83,16 +84,16 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntryComments", x => x.Id);
+                    table.PrimaryKey("PK_entrycomment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EntryComments_entry_EntryId",
+                        name: "FK_entrycomment_entry_EntryId",
                         column: x => x.EntryId,
                         principalSchema: "dbo",
                         principalTable: "entry",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EntryComments_user_CreatedById",
+                        name: "FK_entrycomment_user_CreatedById",
                         column: x => x.CreatedById,
                         principalSchema: "dbo",
                         principalTable: "user",
@@ -153,7 +154,8 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntryCommentFavorites",
+                name: "entrycommentfavorite",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -163,15 +165,16 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntryCommentFavorites", x => x.Id);
+                    table.PrimaryKey("PK_entrycommentfavorite", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EntryCommentFavorites_EntryComments_EntryCommentId",
+                        name: "FK_entrycommentfavorite_entrycomment_EntryCommentId",
                         column: x => x.EntryCommentId,
-                        principalTable: "EntryComments",
+                        principalSchema: "dbo",
+                        principalTable: "entrycomment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EntryCommentFavorites_user_CreatedById",
+                        name: "FK_entrycommentfavorite_user_CreatedById",
                         column: x => x.CreatedById,
                         principalSchema: "dbo",
                         principalTable: "user",
@@ -180,7 +183,8 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntryCommentVotes",
+                name: "entrycommentvote",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -191,11 +195,12 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntryCommentVotes", x => x.Id);
+                    table.PrimaryKey("PK_entrycommentvote", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EntryCommentVotes_EntryComments_EntryCommentId",
+                        name: "FK_entrycommentvote_entrycomment_EntryCommentId",
                         column: x => x.EntryCommentId,
-                        principalTable: "EntryComments",
+                        principalSchema: "dbo",
+                        principalTable: "entrycomment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -207,28 +212,33 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EntryCommentFavorites_CreatedById",
-                table: "EntryCommentFavorites",
+                name: "IX_entrycomment_CreatedById",
+                schema: "dbo",
+                table: "entrycomment",
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EntryCommentFavorites_EntryCommentId",
-                table: "EntryCommentFavorites",
-                column: "EntryCommentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EntryComments_CreatedById",
-                table: "EntryComments",
-                column: "CreatedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EntryComments_EntryId",
-                table: "EntryComments",
+                name: "IX_entrycomment_EntryId",
+                schema: "dbo",
+                table: "entrycomment",
                 column: "EntryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EntryCommentVotes_EntryCommentId",
-                table: "EntryCommentVotes",
+                name: "IX_entrycommentfavorite_CreatedById",
+                schema: "dbo",
+                table: "entrycommentfavorite",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_entrycommentfavorite_EntryCommentId",
+                schema: "dbo",
+                table: "entrycommentfavorite",
+                column: "EntryCommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_entrycommentvote_EntryCommentId",
+                schema: "dbo",
+                table: "entrycommentvote",
                 column: "EntryCommentId");
 
             migrationBuilder.CreateIndex(
@@ -258,10 +268,12 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "EntryCommentFavorites");
+                name: "entrycommentfavorite",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "EntryCommentVotes");
+                name: "entrycommentvote",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "entryfavorite",
@@ -272,7 +284,8 @@ namespace SozlukApp.Infrastructure.Persistence.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "EntryComments");
+                name: "entrycomment",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "entry",

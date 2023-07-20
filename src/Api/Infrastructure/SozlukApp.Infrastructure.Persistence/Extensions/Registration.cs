@@ -20,6 +20,12 @@ namespace SozlukApp.Infrastructure.Persistence.Extensions
                 conf.UseSqlServer("connectionString");
             });
 
+
+            // this lines for seeding the data
+            //var seedData = new SeedData();
+            //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
+
+
             return services;
         }
     }
