@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SozlukApp.Api.Application.Interfaces.Repositories
 {
-    public interface IUserRepository:IGenericRepository<User>
+    public interface IEntryRepository: IGenericRepository<Entry>
     {
-        
+
     }
 }
