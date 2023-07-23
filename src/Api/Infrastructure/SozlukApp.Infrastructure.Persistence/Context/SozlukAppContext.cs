@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace SozlukApp.Infrastructure.Persistence.Context
 
         public SozlukAppContext(DbContextOptions options) : base(options)
         {
-
+            
         }
 
         public DbSet<User> Users { get; set; }
@@ -31,7 +32,7 @@ namespace SozlukApp.Infrastructure.Persistence.Context
         public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
         public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
         public DbSet<EntryCommentVote> EntryCommentVotes { get; set; }
-
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
