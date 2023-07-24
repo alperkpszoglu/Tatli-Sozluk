@@ -1,26 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
 using SozlukApp.Api.Domain.Models;
-using SozlukApp.Infrastructure.Persistence.Context;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SozlukApp.Infrastructure.Persistence.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly SozlukAppContext context;
+        private readonly DbContext context;
 
 
         // we set the entity according to TEntity
         protected DbSet<TEntity> entity => context.Set<TEntity>();
 
-        public GenericRepository(SozlukAppContext _context)
+        public GenericRepository(DbContext _context)
         {
             this.context = _context ?? throw new ArgumentNullException(nameof(_context));
         }
@@ -145,7 +138,7 @@ namespace SozlukApp.Infrastructure.Persistence.Repositories
 
         public virtual bool DeleteRange(Expression<Func<TEntity, bool>> predicate)
         {
-            context.RemoveRange(predicate);
+            context.RemoveRange(entity.Where(predicate));
             return context.SaveChanges() > 0;
         }
 

@@ -4,12 +4,10 @@ using SozlukApp.Api.Domain.Models;
 
 namespace SozlukApp.Infrastructure.Persistence.Repositories
 {
-    public class UserRepository: GenericRepository<User>, IUserRepository
+    public class EntryCommentRepository : GenericRepository<EntryComment>, IEntryCommentRepository
     {
-        public UserRepository(DbContext _context) : base(_context)
-        {    
+        public EntryCommentRepository(DbContext _context) : base(_context)
+        {
         }
-
-
     }
 }

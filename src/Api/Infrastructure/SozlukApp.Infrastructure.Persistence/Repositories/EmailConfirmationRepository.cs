@@ -4,12 +4,10 @@ using SozlukApp.Api.Domain.Models;
 
 namespace SozlukApp.Infrastructure.Persistence.Repositories
 {
-    public class UserRepository: GenericRepository<User>, IUserRepository
+    public class EmailConfirmationRepository : GenericRepository<EmailConfirmation>, IEmailConfirmationRepository
     {
-        public UserRepository(DbContext _context) : base(_context)
-        {    
+        public EmailConfirmationRepository(DbContext _context) : base(_context)
+        {
         }
-
-
     }
 }
