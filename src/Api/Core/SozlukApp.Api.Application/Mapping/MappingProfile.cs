@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SozlukApp.Api.Domain.Models;
 using SozlukAppCommon.Models.Queries;
+using SozlukAppCommon.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace SozlukApp.Api.Application.Mapping
         {
             CreateMap<User, LoginUserViewModel>()
                 .ReverseMap();
+
+            CreateMap<CreateUserCommand, User>()
+                .ReverseMap();
+
 
         }
     }

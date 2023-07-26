@@ -17,11 +17,20 @@ namespace SozlukApp.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserCommand command )
+        public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
         {
             var result = await mediator.Send(command);
 
             return Ok(result);  
+        }
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> Register([FromBody] CreateUserCommand command)
+        {
+            var result = await mediator.Send(command);
+
+            return Ok(result);
         }
     }
 }
