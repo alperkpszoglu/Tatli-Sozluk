@@ -4,11 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using SozlukApp.Api.Application.Interfaces.Repositories;
 using SozlukApp.Infrastructure.Persistence.Context;
 using SozlukApp.Infrastructure.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SozlukApp.Infrastructure.Persistence.Extensions
 {
@@ -16,12 +11,13 @@ namespace SozlukApp.Infrastructure.Persistence.Extensions
     {
         public static IServiceCollection AddInfrastructureRegistration(this IServiceCollection services, IConfiguration configuration)
         {
-            string connectionString = configuration["SozlukAppDbConnectionString"].ToString();
+
             services.AddDbContext<SozlukAppContext>(conf =>
             {
-                conf.UseSqlServer("connectionString");
+                conf.UseSqlServer(configuration.GetConnectionString("SozlukAppDbConnectionString"));
             });
-
+            Console.WriteLine(configuration.GetConnectionString("SozlukAppDbConnectionString"));
+            services.AddScoped<DbContext, SozlukAppContext>();
 
             // this lines for seeding the data
             //var seedData = new SeedData();
@@ -31,7 +27,6 @@ namespace SozlukApp.Infrastructure.Persistence.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEmailConfirmationRepository, EmailConfirmationRepository>();
             services.AddScoped<IEntryCommentRepository, EntryCommentRepository>();
-
 
             return services;
         }

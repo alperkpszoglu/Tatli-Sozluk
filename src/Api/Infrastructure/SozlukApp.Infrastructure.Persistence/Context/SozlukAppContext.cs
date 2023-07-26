@@ -36,7 +36,7 @@ namespace SozlukApp.Infrastructure.Persistence.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Data Source=ALPER; Initial Catalog= sozlukAppDB; Integrated Security=True;Encrypt=False;Connection Timeout=120;";
+            string connectionString = "Data Source=ALPER; Initial Catalog=sozlukAppDB; Integrated Security=True;Encrypt=False;Connection Timeout=120;";
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(connectionString);

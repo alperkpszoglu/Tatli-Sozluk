@@ -16,7 +16,11 @@ namespace SozlukApp.Api.Application.Extensions
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            services.AddMediatR(assembly);
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(assembly);
+            });
+            //services.AddMediatR(assembly);
             services.AddAutoMapper(assembly);
             services.AddValidatorsFromAssembly(assembly);
 
