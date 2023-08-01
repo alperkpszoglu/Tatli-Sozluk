@@ -26,7 +26,9 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Create
             
             var user = mapper.Map<Domain.Models.User>(request);
 
-            // TO-Do: create progress will complete
+            var rows = await userRepository.AddAsync(user);
+
+            
         }
     }
 }

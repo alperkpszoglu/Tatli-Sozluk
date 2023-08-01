@@ -20,6 +20,8 @@ namespace SozlukApp.Api.Application.Mapping
             CreateMap<CreateUserCommand, User>()
                 .ReverseMap();
 
+            CreateMap<UpdateUserCommand, User>()
+                .ReverseMap();
 
         }
     }

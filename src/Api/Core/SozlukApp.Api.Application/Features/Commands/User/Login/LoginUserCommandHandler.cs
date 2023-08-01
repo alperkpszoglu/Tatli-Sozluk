@@ -11,13 +11,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace SozlukApp.Api.Application.Features.Commands.User
+namespace SozlukApp.Api.Application.Features.Commands.User.Login
 {
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;  
+        private readonly IConfiguration _configuration;
 
         public LoginUserCommandHandler(IUserRepository userRepository, IMapper mapper, IConfiguration configuration)
         {
@@ -32,7 +32,7 @@ namespace SozlukApp.Api.Application.Features.Commands.User
 
             if (user == null)
                 throw new DbValidationException("User not found!!");
-            
+
             var password = PasswordEncryptor.Encrypt(request.Password);
 
             if (user.Password != password)
@@ -40,7 +40,7 @@ namespace SozlukApp.Api.Application.Features.Commands.User
 
             if (!user.EmailConfirmed)
                 throw new DbValidationException("You have to confirm your Email address");
-            
+
             var result = _mapper.Map<LoginUserViewModel>(user);
             var claims = new Claim[]
             {
@@ -57,14 +57,14 @@ namespace SozlukApp.Api.Application.Features.Commands.User
         }
 
         private string GenerateToken(Claim[] claims)
-        {   
+        {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AuthConfig:Secret"]));
-            var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiry = DateTime.Now.AddDays(10);
 
             var token = new JwtSecurityToken(claims: claims,
                                             signingCredentials: creds,
-                                            expires:  expiry,
+                                            expires: expiry,
                                             notBefore: DateTime.Now);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

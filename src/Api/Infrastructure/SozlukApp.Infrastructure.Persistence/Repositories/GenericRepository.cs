@@ -208,6 +208,24 @@ namespace SozlukApp.Infrastructure.Persistence.Repositories
             return await query.ToListAsync();
         }
 
+        public virtual async Task<TEntity> GetByIdAsync(Guid id, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
+        {
+            TEntity found = await entity.FindAsync(id);
+
+            if(found == null)
+                return null;
+
+            if (noTracking)
+                context.Entry(found).State = EntityState.Detached;
+
+            foreach (Expression<Func<TEntity, object>> include in includes)
+            {
+                context.Entry(found).Reference(include).Load();
+            }
+
+            return found;
+        }
+
         public virtual async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = entity;
