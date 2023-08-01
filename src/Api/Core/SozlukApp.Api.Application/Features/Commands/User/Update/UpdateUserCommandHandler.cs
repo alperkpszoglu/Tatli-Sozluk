@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
+using SozlukAppCommon.Events.User;
+using SozlukAppCommon.Infrastructure;
+using SozlukAppCommon;
 using SozlukAppCommon.Infrastructure.Exceptions;
 using SozlukAppCommon.Models.RequestModels;
 using System;
@@ -29,9 +32,31 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Update
             if (user == null)
                 throw new DbValidationException("User not found!!");
 
+            var dbEmailAddress = user.EmailAddress;
+            var isEmailChanged = string.CompareOrdinal(dbEmailAddress, request.EmailAddress) != 0;
+
             mapper.Map(request, user); // we don't need to create a new instance with .Map function
 
             var rows = await userRepository.UpdateAsync(user);
+
+            // email changed
+            
+            // To Do Email change will validate
+            if (rows > 0)
+            {
+                var _event = new UserEmailChangedEvents()
+                {
+                    OldEmailAddress = null,
+                    NewEmailAddress = request.EmailAddress
+                };
+
+                QueueFactory.SendMessageToExchange(
+                    exchangeName: SozlukAppConstants.UserExchangeName,
+                    exchangeType: SozlukAppConstants.DefaulExchange,
+                    queueName: SozlukAppConstants.UserEmailChangeQueueName,
+                    obj: _event);
+            }
+
 
             return user.Id;
         }
