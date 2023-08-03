@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SozlukAppCommon
+﻿namespace SozlukAppCommon
 {
     public class SozlukAppConstants
     {
@@ -12,8 +6,29 @@ namespace SozlukAppCommon
         public const string RabbitHost = "localhost";
         public const string DefaulExchange = "direct";
 
+        // user
         public const string UserExchangeName = "UserExchange";
         public const string UserEmailChangeQueueName = "UserEmailChangeQueue";
+
+        
+        // fav
+        public const string FavoritesExchangeName = "FavExchangeName";
+        public const string CreateEntryFavQueueName = "CreateEntryFavQueue";
+        public const string DeleteEntryFavQueueName = "DeleteEntryFavQueue";
+        
+        public const string CreateEntryCommentFavQueueName = "CreateEntryCommentFavQueue";
+        public const string DeleteEntryCommentFavQueueName = "DeleteEntryCommentFavQueue";
+
+
+        // votes
+        public const string VoteExchangeName = "VoteExchangeName";
+        public const string CreateEntryVoteQueueName = "CreateEntryVoteQueue";
+        public const string DeleteEntryVoteQueueName = "DeleteEntryVoteQueue";
+
+        public const string CreateEntryCommentVoteQueueName = "CreateEntryCommentVoteQueue";
+        public const string DeleteEntryCommentVoteQueueName = "DeleteEntryCommentVoteQueue";
+
+
 
     }
 }

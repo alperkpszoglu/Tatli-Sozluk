@@ -2,11 +2,6 @@
 using SozlukApp.Api.Domain.Models;
 using SozlukAppCommon.Models.Queries;
 using SozlukAppCommon.Models.RequestModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SozlukApp.Api.Application.Mapping
 {
@@ -23,6 +18,11 @@ namespace SozlukApp.Api.Application.Mapping
             CreateMap<UpdateUserCommand, User>()
                 .ReverseMap();
 
+            CreateMap<CreateEntryCommand, Entry>()
+                .ReverseMap();
+
+            CreateMap<CreateEntryCommentCommand, EntryComment>()
+                .ReverseMap();
         }
     }
 }

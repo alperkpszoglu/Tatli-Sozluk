@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SozlukApp.Api.Domain.Models
+﻿namespace SozlukApp.Api.Domain.Models
 {
     public class EntryFavorite : BaseEntity
     {

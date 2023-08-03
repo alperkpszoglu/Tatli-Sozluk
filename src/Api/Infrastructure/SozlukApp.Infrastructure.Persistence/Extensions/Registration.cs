@@ -16,7 +16,7 @@ namespace SozlukApp.Infrastructure.Persistence.Extensions
             {
                 conf.UseSqlServer(configuration.GetConnectionString("SozlukAppDbConnectionString"));
             });
-            Console.WriteLine(configuration.GetConnectionString("SozlukAppDbConnectionString"));
+
             services.AddScoped<DbContext, SozlukAppContext>();
 
             // this lines for seeding the data

@@ -9,7 +9,7 @@ using SozlukAppCommon.Models.RequestModels;
 
 namespace SozlukApp.Api.Application.Features.Commands.User.Create
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
         private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
@@ -20,7 +20,7 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Create
             this.mapper = mapper;
         }
 
-        public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var existsUser = await userRepository.GetSingleAsync(x => x.EmailAddress == request.EmailAddress);
 
@@ -48,6 +48,7 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Create
                     obj: _event);
             }
 
+            return user.Id; 
         }
     }
 }

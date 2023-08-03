@@ -42,7 +42,7 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Update
             // email changed
             
             // To Do Email change will validate
-            if (rows > 0)
+            if (rows > 0 && isEmailChanged)
             {
                 var _event = new UserEmailChangedEvents()
                 {
@@ -55,6 +55,9 @@ namespace SozlukApp.Api.Application.Features.Commands.User.Update
                     exchangeType: SozlukAppConstants.DefaulExchange,
                     queueName: SozlukAppConstants.UserEmailChangeQueueName,
                     obj: _event);
+
+                user.EmailConfirmed = false;
+                await userRepository.UpdateAsync(user);
             }
 
 
