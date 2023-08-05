@@ -2,12 +2,12 @@
 {
     public class BasedPageQuery
     {
-        public int Page { get; set; }
+        public int CurrentPage { get; set; }
         public int PageSize { get; set; }
 
-        public BasedPageQuery(int page, int pageSize)
+        public BasedPageQuery(int currentPage, int pageSize)
         {
-            Page = page;
+            CurrentPage = currentPage;
             PageSize = pageSize;
         }
     }

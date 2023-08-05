@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Queries.GetEntries;
+using SozlukApp.Api.Application.Features.Queries.GetMainPageEntries;
 using SozlukAppCommon.Models.RequestModels;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SozlukApp.Api.WebApi.Controllers
 {
@@ -17,14 +19,21 @@ namespace SozlukApp.Api.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEntries([FromQuery]GetEntriesQuery query)
+        public async Task<IActionResult> GetEntries([FromQuery] GetEntriesQuery query)
         {
             var result = await mediator.Send(query);
 
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("MainEntries")]
+        public async Task<IActionResult> GetMainEntries(int page, int pageSize)
+        {
+            var result = await mediator.Send(new GetMainPageEntriesQuery(page, pageSize, UserId)); // from base controller 
 
+            return Ok(result);
+        }
 
         [HttpPost]
         [Route("CreateEntry")]
@@ -48,7 +57,7 @@ namespace SozlukApp.Api.WebApi.Controllers
             return Ok(result);
         }
 
-        
+
 
     }
 }
