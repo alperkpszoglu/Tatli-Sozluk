@@ -30,8 +30,8 @@ namespace SozlukApp.Api.Application.Features.Commands.User.ChangePassword
             var hashPassword = PasswordEncryptor.Encrypt(request.OldPassword);
             if(user.Password != hashPassword)
                 throw new DbValidationException("Old Password Wrong!");
-
-            user.Password = hashPassword;
+             
+            user.Password = PasswordEncryptor.Encrypt(request.NewPassword);
 
             await userRepository.UpdateAsync(user);
 

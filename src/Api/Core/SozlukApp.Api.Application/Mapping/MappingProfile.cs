@@ -23,6 +23,10 @@ namespace SozlukApp.Api.Application.Mapping
 
             CreateMap<CreateEntryCommentCommand, EntryComment>()
                 .ReverseMap();
+
+            CreateMap<Entry, GetEntriesViewModel>()
+                .ForMember(x => x.Count, y => y.MapFrom(i => i.EntryComments.Count));
+                
         }
     }
 }
