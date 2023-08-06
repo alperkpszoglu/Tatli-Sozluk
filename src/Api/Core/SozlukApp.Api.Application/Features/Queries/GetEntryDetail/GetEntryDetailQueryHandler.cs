@@ -1,30 +1,29 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Infrastructure.Extensions;
 using SozlukAppCommon.Models.Page;
 using SozlukAppCommon.Models.ResponseModels;
 using SozlukAppCommon.ViewModels;
 
-namespace SozlukApp.Api.Application.Features.Queries.GetMainPageEntries
+namespace SozlukApp.Api.Application.Features.Queries.GetEntryDetail
 {
-    public class GetMainPageEntriesQueryHandler : IRequestHandler<GetMainPageEntriesQuery, PagedViewModel<GetEntryDetailViewModel>>
+    public class GetEntryDetailQueryHandler : IRequestHandler<GetEntryDetailQuery, GetEntryDetailViewModel>
     {
         private readonly IEntryRepository entryRepository;
 
-        public GetMainPageEntriesQueryHandler(IEntryRepository entryRepository)
+        public GetEntryDetailQueryHandler(IEntryRepository entryRepository)
         {
             this.entryRepository = entryRepository;
         }
 
-        public async Task<PagedViewModel<GetEntryDetailViewModel>> Handle(GetMainPageEntriesQuery request, CancellationToken cancellationToken)
+        public async Task<GetEntryDetailViewModel> Handle(GetEntryDetailQuery request, CancellationToken cancellationToken)
         {
             var query = entryRepository.AsQueryable();
 
             query = query.Include(x => x.CreatedBy)
                          .Include(x => x.EntryFavorites)
-                         .Include(x => x.EntryVotes);
+                         .Include(x => x.EntryVotes)
+                         .Include(x => x.Id == request.EntryId);
 
             var list = query.Select(i => new GetEntryDetailViewModel()
             {
@@ -32,7 +31,7 @@ namespace SozlukApp.Api.Application.Features.Queries.GetMainPageEntries
                 Content = i.Content,
                 Subject = i.Subject,
                 IsFavorited = request.UserId.HasValue &&
-                    i.EntryFavorites.Any(q => q.CreatedById == request.UserId), // check if current user added the entry in his favorites
+                    i.EntryFavorites.Any(q => q.CreatedById == request.UserId),
                 FavoritedCount = i.EntryFavorites.Count,
                 CreateDate = i.CreateDate,
                 CreatedByUserName = i.CreatedBy.UserName,
@@ -42,9 +41,7 @@ namespace SozlukApp.Api.Application.Features.Queries.GetMainPageEntries
                     : VoteType.None,
             });
 
-            var entries = await list.GetPaged(request.CurrentPage, request.PageSize);
-
-            return entries;
+            return await list.FirstOrDefaultAsync(cancellationToken);
         }
     }
 }
