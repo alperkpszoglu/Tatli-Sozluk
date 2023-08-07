@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Commands.User.ConfirmEmail;
+using SozlukApp.Api.Application.Features.Queries.GetUserDetail;
 using SozlukAppCommon.Events.User;
 using SozlukAppCommon.Models.RequestModels;
 
@@ -16,6 +17,24 @@ namespace SozlukApp.Api.WebApi.Controllers
         {
             this.mediator = mediator;
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = mediator.Send(new GetUserDetailQuery(id));
+
+            return Ok(result);
+        }
+
+        [HttpGet("UserName/{userName}")]
+        public async Task<IActionResult> GetByUserName(string userName)
+        {
+            var result = mediator.Send(new GetUserDetailQuery(Guid.Empty, userName));
+
+            return Ok(result);
+        }
+
+
 
         [HttpPost]
         [Route("Login")]

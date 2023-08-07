@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using SozlukApp.Api.Domain.Models;
 using SozlukAppCommon.Models.Queries;
+using SozlukAppCommon.Models.QueryModels;
 using SozlukAppCommon.Models.RequestModels;
 
 namespace SozlukApp.Api.Application.Mapping
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -26,7 +27,8 @@ namespace SozlukApp.Api.Application.Mapping
 
             CreateMap<Entry, GetEntriesViewModel>()
                 .ForMember(x => x.Count, y => y.MapFrom(i => i.EntryComments.Count));
-                
+
+            CreateMap<User, UserDetailViewModel>();
         }
     }
 }

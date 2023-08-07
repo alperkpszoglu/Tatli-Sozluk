@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿ using MediatR;
 using SozlukAppCommon;
 using SozlukAppCommon.Events.Entry;
 using SozlukAppCommon.Infrastructure;
