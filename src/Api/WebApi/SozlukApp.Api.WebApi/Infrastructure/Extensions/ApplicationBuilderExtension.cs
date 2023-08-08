@@ -14,19 +14,22 @@ namespace SozlukApp.Api.WebApi.Infrastructure.Extensions
             bool useDefaultHandlingResponse = true,
             Func<HttpContext, Exception, Task> handleException = null)
         {
-
-            app.Run(context =>
+            app.UseExceptionHandler(opt =>
             {
-                var exceptionObj = context.Features.Get<IExceptionHandlerFeature>();
+                opt.Run(context =>
+                {
+                    var exceptionObj = context.Features.Get<IExceptionHandlerFeature>();
 
-                if (!useDefaultHandlingResponse && handleException == null)
-                    throw new ArgumentException("handleException cannot be null when useDefaultHandlingResponse is false");
+                    if (!useDefaultHandlingResponse && handleException == null)
+                        throw new ArgumentException("handleException cannot be null when useDefaultHandlingResponse is false");
 
-                if (!useDefaultHandlingResponse && handleException != null)
-                    return handleException(context, exceptionObj.Error);
+                    if (!useDefaultHandlingResponse && handleException != null)
+                        return handleException(context, exceptionObj.Error);
 
-                return DefaultHandleException(context, exceptionObj.Error, includeExceptionDetails);
+                    return DefaultHandleException(context, exceptionObj.Error, includeExceptionDetails);
+                });
             });
+
 
 
             return app;
@@ -37,9 +40,9 @@ namespace SozlukApp.Api.WebApi.Infrastructure.Extensions
             HttpStatusCode status = HttpStatusCode.InternalServerError;
             string message = "Internal server error occured.";
 
-            if(exception is UnauthorizedAccessException)
+            if (exception is UnauthorizedAccessException)
                 status = HttpStatusCode.Unauthorized;
-           if(exception is DbValidationException)
+            if (exception is DbValidationException)
             {
                 var validationResponse = new ValidationResponseModel(exception.Message);
                 await WriteResponse(context, status, validationResponse);
