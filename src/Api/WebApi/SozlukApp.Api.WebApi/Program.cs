@@ -34,6 +34,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// custom exception handler
+app.ConfigureExceptionHandling(app.Environment.IsDevelopment()); // return true if in the development
+
 app.UseAuthentication(); // it has to be before MapControllers
 app.UseAuthorization();
 
