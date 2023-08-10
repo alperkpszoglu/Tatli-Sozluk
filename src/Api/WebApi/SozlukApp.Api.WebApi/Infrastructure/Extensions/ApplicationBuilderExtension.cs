@@ -44,6 +44,7 @@ namespace SozlukApp.Api.WebApi.Infrastructure.Extensions
                 status = HttpStatusCode.Unauthorized;
             if (exception is DbValidationException)
             {
+                status = HttpStatusCode.BadRequest;
                 var validationResponse = new ValidationResponseModel(exception.Message);
                 await WriteResponse(context, status, validationResponse);
                 return;

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Queries.GetEntries;
 using SozlukApp.Api.Application.Features.Queries.GetEntryComments;
@@ -22,7 +21,7 @@ namespace SozlukApp.Api.WebApi.Controllers
             this.mediator = mediator;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{entryId}")]
         public async Task<IActionResult> GetById(Guid entryId)
         {
             var result = await mediator.Send(new GetEntryDetailQuery(entryId, UserId.Value));
@@ -31,8 +30,8 @@ namespace SozlukApp.Api.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("Comments/{id}")]
-        public async Task<IActionResult> GetEntryCommends(Guid entryId, int page, int pageSize)
+        [Route("Comments/{entryId}")]
+        public async Task<IActionResult> GetEntryComments(Guid entryId, int page, int pageSize)
         {
             var result = await mediator.Send(new GetEntryCommentsQuery(entryId, UserId, page, pageSize));
 
@@ -98,8 +97,5 @@ namespace SozlukApp.Api.WebApi.Controllers
             var result = await mediator.Send(command);
             return Ok(result);
         }
-
-
-
     }
 }
