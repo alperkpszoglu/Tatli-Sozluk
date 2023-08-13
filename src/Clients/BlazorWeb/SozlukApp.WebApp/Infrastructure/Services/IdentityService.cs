@@ -1,4 +1,6 @@
 ﻿using Blazored.LocalStorage;
+using SozlukApp.WebApp.Infrastructure.Extensions;
+using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
 using SozlukAppCommon.Infrastructure.Exceptions;
 using SozlukAppCommon.Infrastructure.Results;
 using SozlukAppCommon.Models.Queries;
@@ -8,7 +10,7 @@ using System.Text.Json;
 
 namespace SozlukApp.WebApp.Infrastructure.Services
 {
-    public class IdentityService
+    public class IdentityService : IIdentityService
     {
         private readonly HttpClient client;
         private readonly ISyncLocalStorageService syncLocalStorageService;
@@ -19,12 +21,22 @@ namespace SozlukApp.WebApp.Infrastructure.Services
             this.syncLocalStorageService = syncLocalStorageService;
         }
 
-        public bool IsLoggedIn => string.IsNullOrEmpty(GetUserToken());
+        public bool IsLoggedIn => !string.IsNullOrEmpty(GetUserToken());
 
-        //public string GetUserToken()
-        //{
-        //    return syncLocalStorageService;
-        //}
+        public string GetUserToken()
+        {
+            return syncLocalStorageService.GetToken();
+        }
+
+        public string GetUserName()
+        {
+            return syncLocalStorageService.GetUserName();
+        }
+
+        public Guid GetUserId()
+        {
+            return syncLocalStorageService.GetUserId();
+        }
 
         public async Task<bool> Login(LoginUserCommand command)
         {
@@ -32,6 +44,7 @@ namespace SozlukApp.WebApp.Infrastructure.Services
 
             var httpResponse = await client.PostAsJsonAsync("/api/User/Login", command);
 
+            // if there is an error
             if (httpResponse != null && !httpResponse.IsSuccessStatusCode)
             {
                 if (httpResponse.StatusCode == System.Net.HttpStatusCode.BadRequest)
@@ -48,19 +61,29 @@ namespace SozlukApp.WebApp.Infrastructure.Services
             responseStr = await httpResponse.Content.ReadAsStringAsync();
             var response = JsonSerializer.Deserialize<LoginUserViewModel>(responseStr);
 
-            if (!string.IsNullOrEmpty(response.Token))
+            if (!string.IsNullOrEmpty(response.Token)) // the user has logged in
             {
                 syncLocalStorageService.SetToken(response.Token);
                 syncLocalStorageService.SetUserName(response.UserName);
                 syncLocalStorageService.SetUserId(response.Id);
 
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.UserName);
 
                 return true;
             }
 
             return false;
-
         }
+
+        public void Logout()
+        {
+            syncLocalStorageService.RemoveItem(LocalStorageExtension.TokenName);
+            syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
+            syncLocalStorageService.RemoveItem(LocalStorageExtension.UserID);
+
+            client.DefaultRequestHeaders.Authorization = null;
+        }
+
+
     }
 }

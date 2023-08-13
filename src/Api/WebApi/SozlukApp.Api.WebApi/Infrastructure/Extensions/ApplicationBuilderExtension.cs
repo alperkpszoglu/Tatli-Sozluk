@@ -1,6 +1,4 @@
-﻿using Bogus;
-using Microsoft.AspNetCore.Diagnostics;
-using Polly;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using SozlukAppCommon.Infrastructure.Exceptions;
 using SozlukAppCommon.Infrastructure.Results;
 using System.Net;

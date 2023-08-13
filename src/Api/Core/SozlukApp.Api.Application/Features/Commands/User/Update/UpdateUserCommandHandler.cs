@@ -1,16 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
+using SozlukAppCommon;
 using SozlukAppCommon.Events.User;
 using SozlukAppCommon.Infrastructure;
-using SozlukAppCommon;
 using SozlukAppCommon.Infrastructure.Exceptions;
 using SozlukAppCommon.Models.RequestModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SozlukApp.Api.Application.Features.Commands.User.Update
 {
