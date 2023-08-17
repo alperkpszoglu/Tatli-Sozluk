@@ -12,7 +12,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddHttpClient("SozlukClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:5001");
+    client.BaseAddress = new Uri("http://localhost:5160");
 }); // TODO AuthTokenHandler will be here
 
 builder.Services.AddScoped(sp =>

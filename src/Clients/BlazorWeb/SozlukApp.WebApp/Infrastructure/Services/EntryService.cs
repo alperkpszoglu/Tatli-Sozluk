@@ -19,7 +19,7 @@ namespace SozlukApp.WebApp.Infrastructure.Services
 
         public async Task<List<GetEntriesViewModel>> GetEntries()
         {
-            var result = await client.GetFromJsonAsync<List<GetEntriesViewModel>>($"/api/Entry?todayEntries=false&count=30");
+            var result = await client.GetFromJsonAsync<List<GetEntriesViewModel>>($"/api/Entry?todaysEntries=false&count=30");
 
             return result;
         }
