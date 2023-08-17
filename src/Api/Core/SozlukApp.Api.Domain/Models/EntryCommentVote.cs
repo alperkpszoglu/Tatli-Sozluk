@@ -1,4 +1,4 @@
-﻿using SozlukAppCommon.ViewModels;
+﻿using SozlukApp.Common.ViewModels;
 
 namespace SozlukApp.Api.Domain.Models
 {

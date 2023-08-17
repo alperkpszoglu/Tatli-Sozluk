@@ -1,5 +1,5 @@
 ﻿using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
-using SozlukAppCommon.ViewModels;
+using SozlukApp.Common.ViewModels;
 
 namespace SozlukApp.WebApp.Infrastructure.Services
 {

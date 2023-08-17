@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using SozlukApp.Api.Domain.Models;
-using SozlukAppCommon.Models.Queries;
-using SozlukAppCommon.Models.QueryModels;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Models.Queries;
+using SozlukApp.Common.Models.QueryModels;
+using SozlukApp.Common.Models.RequestModels;
 
 namespace SozlukApp.Api.Application.Mapping
 {

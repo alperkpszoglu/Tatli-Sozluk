@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SozlukAppCommon.Models.ResponseModels;
+using SozlukApp.Common.Models.ResponseModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntryDetail
 {

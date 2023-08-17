@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\SozlukAppCommon\SozlukAppCommon\SozlukAppCommon.csproj" />
+    <ProjectReference Include="..\..\..\Common\SozlukApp.Common\SozlukApp.Common\SozlukApp.Common.csproj" />
     <ProjectReference Include="..\SozlukApp.Api.Domain\SozlukApp.Api.Domain.csproj" />
   </ItemGroup>
 

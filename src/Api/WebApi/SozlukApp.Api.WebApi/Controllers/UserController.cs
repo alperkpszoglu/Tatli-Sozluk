@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Commands.User.ConfirmEmail;
 using SozlukApp.Api.Application.Features.Queries.GetUserDetail;
-using SozlukAppCommon.Events.User;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Events.User;
+using SozlukApp.Common.Models.RequestModels;
 
 namespace SozlukApp.Api.WebApi.Controllers
 {

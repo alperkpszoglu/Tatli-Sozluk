@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.ResponseModels;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.ResponseModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetMainPageEntries
 {

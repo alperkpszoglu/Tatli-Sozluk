@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntryComments
 {

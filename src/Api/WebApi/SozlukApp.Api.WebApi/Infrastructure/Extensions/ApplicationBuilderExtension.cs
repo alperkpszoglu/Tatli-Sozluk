@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using SozlukAppCommon.Infrastructure.Exceptions;
-using SozlukAppCommon.Infrastructure.Results;
+using SozlukApp.Common.Infrastructure.Exceptions;
+using SozlukApp.Common.Infrastructure.Results;
 using System.Net;
 
 namespace SozlukApp.Api.WebApi.Infrastructure.Extensions

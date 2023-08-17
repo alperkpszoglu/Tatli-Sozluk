@@ -1,4 +1,4 @@
-﻿using SozlukAppCommon.Models.QueryModels;
+﻿using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.WebApp.Infrastructure.Services.Interfaces
 {

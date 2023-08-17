@@ -3,7 +3,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Models.Queries;
+using SozlukApp.Common.Models.Queries;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntries
 {

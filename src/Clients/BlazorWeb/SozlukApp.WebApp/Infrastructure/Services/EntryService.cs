@@ -1,9 +1,9 @@
 ﻿using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.Queries;
-using SozlukAppCommon.Models.QueryModels;
-using SozlukAppCommon.Models.RequestModels;
-using SozlukAppCommon.Models.ResponseModels;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.Queries;
+using SozlukApp.Common.Models.QueryModels;
+using SozlukApp.Common.Models.RequestModels;
+using SozlukApp.Common.Models.ResponseModels;
 using System.Net.Http.Json;
 
 namespace SozlukApp.WebApp.Infrastructure.Services

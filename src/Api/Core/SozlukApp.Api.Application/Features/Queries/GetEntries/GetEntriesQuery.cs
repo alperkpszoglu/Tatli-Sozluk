@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SozlukAppCommon.Models.Queries;
+using SozlukApp.Common.Models.Queries;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntries
 {

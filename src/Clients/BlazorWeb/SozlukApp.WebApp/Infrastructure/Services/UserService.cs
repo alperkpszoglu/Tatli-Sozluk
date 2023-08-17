@@ -1,8 +1,8 @@
 ﻿using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
-using SozlukAppCommon.Events.User;
-using SozlukAppCommon.Infrastructure.Exceptions;
-using SozlukAppCommon.Infrastructure.Results;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Events.User;
+using SozlukApp.Common.Infrastructure.Exceptions;
+using SozlukApp.Common.Infrastructure.Results;
+using SozlukApp.Common.Models.QueryModels;
 using System.Net.Http.Json;
 using System.Text.Json;
 

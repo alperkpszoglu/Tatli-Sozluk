@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon;
-using SozlukAppCommon.Events.Entry;
-using SozlukAppCommon.Infrastructure;
+using SozlukApp.Common;
+using SozlukApp.Common.Events.Entry;
+using SozlukApp.Common.Infrastructure;
 
 namespace SozlukApp.Api.Application.Features.Commands.Entry.CreateFav
 {

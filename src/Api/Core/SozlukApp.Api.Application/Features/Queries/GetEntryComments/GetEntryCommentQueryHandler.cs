@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.QueryModels;
-using SozlukAppCommon.Models.ResponseModels;
-using SozlukAppCommon.ViewModels;
-using SozlukAppCommon.Infrastructure.Extensions;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.QueryModels;
+using SozlukApp.Common.Models.ResponseModels;
+using SozlukApp.Common.ViewModels;
+using SozlukApp.Common.Infrastructure.Extensions;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntryComments
 {

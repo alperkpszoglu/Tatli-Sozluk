@@ -2,7 +2,13 @@
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        <h5 class="text-white text-center sidebar-heading">@EntriesSubject</h5>
+
+        <a class="more-data" @onclick="@RefreshEntries">yenile</a>
+
+        <ul>
+            <EntriesComponent @ref="entriesComponent"></EntriesComponent>
+        </ul>
     </div>
 
     <main>
@@ -15,3 +21,14 @@
         </article>
     </main>
 </div>
+
+@code {
+    public string EntriesSubject { get; set; } = "Bugün";
+
+    private EntriesComponent entriesComponent;
+
+    private async Task RefreshEntries()
+    {
+
+    }
+}

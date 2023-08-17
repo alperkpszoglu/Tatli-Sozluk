@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Models.RequestModels;
 
 namespace SozlukApp.Api.Application.Features.Commands.User.Login
 {

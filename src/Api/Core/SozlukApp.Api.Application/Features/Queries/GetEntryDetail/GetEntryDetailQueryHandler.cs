@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.ResponseModels;
-using SozlukAppCommon.ViewModels;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.ResponseModels;
+using SozlukApp.Common.ViewModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetEntryDetail
 {

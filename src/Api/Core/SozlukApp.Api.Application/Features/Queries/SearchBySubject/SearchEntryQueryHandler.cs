@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.SearchBySubject
 {

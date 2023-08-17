@@ -2,7 +2,7 @@
 using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
 using SozlukApp.Api.Domain.Models;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Models.RequestModels;
 
 namespace SozlukApp.Api.Application.Features.Commands.EntryComment.Create
 {

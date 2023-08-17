@@ -5,8 +5,8 @@ using SozlukApp.Api.Application.Features.Queries.GetEntryComments;
 using SozlukApp.Api.Application.Features.Queries.GetEntryDetail;
 using SozlukApp.Api.Application.Features.Queries.GetMainPageEntries;
 using SozlukApp.Api.Application.Features.Queries.GetUserEntries;
-using SozlukAppCommon.Models.QueryModels;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Models.QueryModels;
+using SozlukApp.Common.Models.RequestModels;
 
 namespace SozlukApp.Api.WebApi.Controllers
 {

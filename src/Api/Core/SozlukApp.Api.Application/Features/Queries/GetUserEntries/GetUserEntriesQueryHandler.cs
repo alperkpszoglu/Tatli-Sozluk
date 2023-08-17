@@ -2,9 +2,9 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Infrastructure.Extensions;
-using SozlukAppCommon.Models.Page;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Infrastructure.Extensions;
+using SozlukApp.Common.Models.Page;
+using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetUserEntries
 {

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetUserDetail
 {

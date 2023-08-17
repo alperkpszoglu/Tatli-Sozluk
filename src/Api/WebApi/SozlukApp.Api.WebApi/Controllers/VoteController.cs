@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Commands.Entry.DeleteVote;
 using SozlukApp.Api.Application.Features.Commands.EntryComment.DeleteVote;
-using SozlukAppCommon.Models.RequestModels;
-using SozlukAppCommon.ViewModels;
+using SozlukApp.Common.Models.RequestModels;
+using SozlukApp.Common.ViewModels;
 
 namespace SozlukApp.Api.WebApi.Controllers
 {

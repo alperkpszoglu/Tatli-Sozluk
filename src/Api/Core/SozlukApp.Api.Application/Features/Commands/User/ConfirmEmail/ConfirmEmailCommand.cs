@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Infrastructure.Exceptions;
+using SozlukApp.Common.Infrastructure.Exceptions;
 
 namespace SozlukApp.Api.Application.Features.Commands.User.ConfirmEmail
 {

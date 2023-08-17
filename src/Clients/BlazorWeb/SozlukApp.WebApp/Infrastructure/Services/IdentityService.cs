@@ -1,10 +1,10 @@
 ﻿using Blazored.LocalStorage;
 using SozlukApp.WebApp.Infrastructure.Extensions;
 using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
-using SozlukAppCommon.Infrastructure.Exceptions;
-using SozlukAppCommon.Infrastructure.Results;
-using SozlukAppCommon.Models.Queries;
-using SozlukAppCommon.Models.RequestModels;
+using SozlukApp.Common.Infrastructure.Exceptions;
+using SozlukApp.Common.Infrastructure.Results;
+using SozlukApp.Common.Models.Queries;
+using SozlukApp.Common.Models.RequestModels;
 using System.Net.Http.Json;
 using System.Text.Json;
 

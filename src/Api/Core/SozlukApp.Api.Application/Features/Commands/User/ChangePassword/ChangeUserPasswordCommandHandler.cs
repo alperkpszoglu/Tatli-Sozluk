@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
-using SozlukAppCommon.Events.User;
-using SozlukAppCommon.Infrastructure;
-using SozlukAppCommon.Infrastructure.Exceptions;
+using SozlukApp.Common.Events.User;
+using SozlukApp.Common.Infrastructure;
+using SozlukApp.Common.Infrastructure.Exceptions;
 
 namespace SozlukApp.Api.Application.Features.Commands.User.ChangePassword
 {

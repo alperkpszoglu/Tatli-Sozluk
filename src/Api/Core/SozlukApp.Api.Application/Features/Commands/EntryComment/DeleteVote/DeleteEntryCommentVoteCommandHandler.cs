@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SozlukAppCommon.Events.Entry;
-using SozlukAppCommon.Infrastructure;
-using SozlukAppCommon;
+using SozlukApp.Common.Events.Entry;
+using SozlukApp.Common.Infrastructure;
+using SozlukApp.Common;
 
 namespace SozlukApp.Api.Application.Features.Commands.EntryComment.DeleteVote
 {

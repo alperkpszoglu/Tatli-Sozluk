@@ -2,7 +2,7 @@
 using MediatR;
 using SozlukApp.Api.Application.Interfaces.Repositories;
 using SozlukApp.Api.Domain.Models;
-using SozlukAppCommon.Models.QueryModels;
+using SozlukApp.Common.Models.QueryModels;
 
 namespace SozlukApp.Api.Application.Features.Queries.GetUserDetail
 {

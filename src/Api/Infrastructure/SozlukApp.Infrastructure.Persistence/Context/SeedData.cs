@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SozlukApp.Api.Domain.Models;
-using SozlukAppCommon.Infrastructure;
+using SozlukApp.Common.Infrastructure;
 
 namespace SozlukApp.Infrastructure.Persistence.Context
 {
